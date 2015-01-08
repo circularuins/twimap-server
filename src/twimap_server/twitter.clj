@@ -53,7 +53,8 @@
                                     (.. tw getGeoLocation getLatitude)
                                     "0.0")
                                   (if (.getGeoLocation tw)
-                                    (.. tw getGeoLocation getLongitude))
+                                    (.. tw getGeoLocation getLongitude)
+                                    "0.0")
                                   (.format date-format (.getCreatedAt tw))
                                   (str "https://twitter.com/"
                                        (.. tw getUser getScreenName)
