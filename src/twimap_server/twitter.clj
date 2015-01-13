@@ -85,11 +85,10 @@
 (defn search
   "ツイート検索用API。mapを返す"
   [word]
-  (array-map :tweets (search-and-save word))
-  ;; (search-and-save word)
-  ;; (if (empty? (mongo/search-keyword (clojure.string/lower-case word)))
-  ;;   "not-found"
-  ;;   (array-map
-  ;;    :tweets
-  ;;    (mongo/search-tweet-by-keyword (.toString ((first (mongo/search-keyword (clojure.string/lower-case word))) :_id)))))
+  (doall (search-and-save word))  
+  (if (empty? (mongo/search-keyword (clojure.string/lower-case word)))
+    {:tweets nil}
+    (array-map
+     :tweets
+     (mongo/search-tweet-by-keyword (.toString ((first (mongo/search-keyword (clojure.string/lower-case word))) :_id)))))
   )

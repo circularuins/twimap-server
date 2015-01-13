@@ -67,34 +67,7 @@
                 :date (data :date)
                 :tweetUrl (data :tweetUrl)
                 :keyId (.toString key-id)}
-               {:upsert true})
-;    (search-tweet-by-keyword (.toString key-id))
-    (let [re (mc/find-one-as-map db coll {:tweetId (data :tweetId)})]
-      (zipmap [:tweetId
-               :userId
-               :userName
-               :screenName
-               :location
-               :imageUrl
-               :followers
-               :text
-               :latitude
-               :longitude
-               :date
-               :tweetUrl]
-              [(re :tweetId)
-               (re :userId)
-               (re :userName)
-               (re :screenName)
-               (re :location)
-               (re :imageUrl)
-               (re :followers)
-               (re :text)
-               (re :latitude)
-               (re :longitude)
-               (re :date)
-               (re :tweetUrl)]))
-    ))
+               {:upsert true})))
 
 (defn search-keyword [word]
   (let [coll "keyword"]
