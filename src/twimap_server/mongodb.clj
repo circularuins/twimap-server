@@ -84,4 +84,4 @@
 (defn modi-keyword [id word]
   (let [coll "keyword"]
     (mc/update-by-id db coll id { $set {:keyword word
-                                 :updated_on (.toString (now-time))}})))
+                                        :updated_on (.toString (now-time))}})))

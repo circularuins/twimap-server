@@ -88,7 +88,9 @@
   (doall (search-and-save word))  
   (if (empty? (mongo/search-keyword (clojure.string/lower-case word)))
     {:tweets nil}
-    (array-map
-     :tweets
-     (mongo/search-tweet-by-keyword (.toString ((first (mongo/search-keyword (clojure.string/lower-case word))) :_id)))))
-  )
+    (let [result (mongo/search-tweet-by-keyword (.toString ((first (mongo/search-keyword (clojure.string/lower-case word))) :_id)))]
+      (array-map
+       :tweets
+       (concat
+        (take 100 (filter #(and (= (:latitude %) "0.0") (= (:longitude %) "0.0")) result))
+        (filter #(or (not= (:latitude %) "0.0") (not= (:longitude %) "0.0")) result))))))
