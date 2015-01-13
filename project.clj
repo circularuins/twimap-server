@@ -9,7 +9,8 @@
                  [compojure "1.3.1"]
                  [cheshire "5.4.0"]
                  [org.twitter4j/twitter4j-core "4.0.2"]
-                 [com.novemberain/monger "2.0.0"]]
+                 [com.novemberain/monger "2.0.0"]
+                 [clj-time "0.9.0"]]
   :plugins [[lein-ring "0.8.13"]]
   :main twimap-server.core
   :aot [twimap-server.core]

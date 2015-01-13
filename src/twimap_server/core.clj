@@ -17,7 +17,7 @@
 
 (defroutes api-routes
   (GET "/twitter/search/:word" [word]
-       (json-response (twitter/search-keyword word)))
+       (json-response (twitter/search word)))
   (route/resources "/")
   (route/not-found "page not found"))
 
